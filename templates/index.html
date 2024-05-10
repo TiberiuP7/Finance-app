@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div>
+        <table>
+            <tr>
+                <b>
+                <th>Symbol &nbsp;&nbsp;</th>
+                <th> Name     &nbsp;</th>
+                <th>  Shares    &nbsp; </th>
+                <th> Price   &nbsp; </th>
+                <th> Total-Value &nbsp; </th>
+                </b>
+            </tr>
+            <tr>
+                {% for stock in stocks %}
+                    <tr>
+                        <td>{{ stock.symbol }} </td>
+                        <td>{{ stock.name }} </td>
+                        <td>{{ stock.shares }}</td>
+                        <td>{{ stock.price }} </td>
+                        <td>{{ stock.value }} </td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+        <div style="text-align:right;"><b>Cash</b> &nbsp;&nbsp; {{ cash }}</div>
+        <div style="text-align:right;"><b>TOTAL</b> &nbsp; {{ grand }}</divstyle>
+
+    <form action="/wallet" method="get">
+        <button type="submit">Wallet</button>
+    </form>
+{% endblock %}
